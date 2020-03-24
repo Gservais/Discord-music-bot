@@ -1,7 +1,7 @@
 # Discord-music-bot
 Discord bot created for a personnal discord server
 
-Create a `.env` file in `./src`
+Create a `.env` file in root folder
  
 These files will contain the following list of key-value pairs which must be defined for the bot to run properly :
 ```
