@@ -1,6 +1,8 @@
 {
+    "description": "Personal discord bot",
     "scripts": {
-        "start": "nodemon main"
+        "start_dev": "nodemon main",
+        "start": "node main.js"
     },
     "dependencies": {
         "@discordjs/opus": "^0.1.0",
