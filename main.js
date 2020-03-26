@@ -64,8 +64,8 @@ client.on('message', async message =>{
     if(command === 'horoscope')
         horoscope(message, args);
 
-    if(command === 'teuteu')
-        message.channel.send((gnegnegne(args.join(' '))));
+    // if(command === 'teuteu')
+    //     message.channel.send((gnegnegne(args.join(' '))));
 
 });
 
