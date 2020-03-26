@@ -9,7 +9,8 @@ const {
     resumeSong,
     stopSong,
     skipSong,
-    avatar
+    avatar,
+    horoscope
 } = require('./commands');
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -59,6 +60,9 @@ client.on('message', async message =>{
 
     if(command === 'avatar')
         avatar(message,args)
+
+    if(command === 'horoscope')
+        horoscope(message, args);
 
     if(command === 'teuteu')
         message.channel.send((gnegnegne(args.join(' '))));
