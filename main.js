@@ -60,9 +60,8 @@ client.on('message', async message =>{
     if(command === 'avatar')
         avatar(message,args)
 
-    if(command === 'teuteu'){
+    if(command === 'teuteu')
         message.channel.send((gnegnegne(args.join(' '))));
-    }
 
 });
 
