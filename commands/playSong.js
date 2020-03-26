@@ -37,7 +37,7 @@ module.exports = async (message, args)=>{
     if(!SONG_URL){
         embed = new Discord.MessageEmbed();
         embed.addField("Missing argument", "Please specify the url of the song");
-        embed.addField("Command template", "!play <song url>")
+        embed.addField("Command template", "<prefix>play <song url>")
         require('./index').commandAnswer(message, embed);
         return;
     }

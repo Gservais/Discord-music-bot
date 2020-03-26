@@ -6,7 +6,7 @@ module.exports = (message, args)=>{
         if(args[0] === undefined || args[1] === undefined){
             embed = new Discord.MessageEmbed();
             embed.addField('Wrong args', 'Please mention the missing user or role!');
-            embed.addField('Command template', '!add-role <user> <role>');
+            embed.addField('Command template', '<prefix>add-role <user> <role>');
             require('./index').commandAnswer(message, embed);
             return;
         }

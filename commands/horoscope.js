@@ -7,7 +7,7 @@ module.exports = async(message, args)=>{
     if(args.length === 0){
         embed = new Discord.MessageEmbed();
         embed.addField('Missing argument', 'Please specify your sign!');
-        embed.addField('Command template', '!horoscope <sign>');
+        embed.addField('Command template', '<prefix>horoscope <sign>');
         embed.addField('Sign values', 'aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius and pisces');
         require('./index').commandAnswer(message, embed);
         return;

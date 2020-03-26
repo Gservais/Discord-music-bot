@@ -4,7 +4,7 @@ module.exports = (message, args)=>{
     if(args[0] === undefined || (isNaN(args[0]) && args[0] !== 'all')){
         embed = new Discord.MessageEmbed();
         embed.addField('Wrong args', 'Please specify either the number of messages to delete or all !');
-        embed.addField('Command template', '!delete <number> | <all>');
+        embed.addField('Command template', '<prefix>delete <number> | <all>');
         require('./index').commandAnswer(message, embed);
         return;
     }
