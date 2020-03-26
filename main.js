@@ -18,8 +18,12 @@ const client = new Discord.Client();
 const TOKEN = process.env.TOKEN;
 const PREFIX = process.env.PREFIX;
 
+connect();
 
-client.login(TOKEN);
+async function connect(){
+    await client.login(TOKEN);
+    client.user.setActivity('Nooting', { type:'PLAYING' })
+}
 
 client.on('ready', ()=>{
     console.log('Connected');
