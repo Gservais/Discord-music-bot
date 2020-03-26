@@ -8,7 +8,8 @@ const {
     pauseSong,
     resumeSong,
     stopSong,
-    skipSong
+    skipSong,
+    avatar
 } = require('./commands');
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -56,7 +57,10 @@ client.on('message', async message =>{
     if(command === 'skip')
         skipSong(message, args);
 
-    if(command === 'gnegne'){
+    if(command === 'avatar')
+        avatar(message,args)
+
+    if(command === 'teuteu'){
         message.channel.send((gnegnegne(args.join(' '))));
     }
 

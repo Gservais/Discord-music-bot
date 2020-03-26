@@ -27,7 +27,7 @@ const defineDispatcher = (message)=>{
         }
     });
 
-    dispatcher.on('error', (err)=>{
+    getDispatcher().on('error', (err)=>{
         console.log(err)
     })
 }

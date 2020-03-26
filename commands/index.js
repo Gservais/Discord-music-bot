@@ -7,6 +7,7 @@ const pauseSong = require('./pauseSong');
 const resumeSong = require('./resumeSong');
 const stopSong = require('./stopSong');
 const skipSong = require('./skipSong');
+const avatar = require('./avatar');
 
 const ADMIN_ROLE_ID = process.env.ADMIN_ROLE_ID;
 
@@ -35,5 +36,6 @@ module.exports={
     pauseSong,
     resumeSong,
     stopSong,
-    skipSong
+    skipSong,
+    avatar
 }
