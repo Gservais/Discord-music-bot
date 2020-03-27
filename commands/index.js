@@ -1,14 +1,5 @@
-const deleteMessage = require('./deleteMessage');
-const addRole = require('./addRole');
-const removeRole = require('./removeRole');
-const kick = require('./kick');
-const playSong = require('./playSong');
-const pauseSong = require('./pauseSong');
-const resumeSong = require('./resumeSong');
-const stopSong = require('./stopSong');
-const skipSong = require('./skipSong');
-const avatar = require('./avatar');
-const horoscope = require('./horoscope');
+require('dotenv').config();
+const Discord = require('discord.js');
 
 const ADMIN_ROLE_ID = process.env.ADMIN_ROLE_ID;
 
@@ -29,15 +20,4 @@ function checkIfAdmin(message){
 module.exports={
     commandAnswer,
     checkIfAdmin,
-    deleteMessage,
-    addRole,
-    removeRole,
-    kick,
-    playSong,
-    pauseSong,
-    resumeSong,
-    stopSong,
-    skipSong,
-    avatar,
-    horoscope
 }

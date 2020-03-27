@@ -2,6 +2,32 @@ const ytdl = require('ytdl-core');
 const Discord = require("discord.js");
 const streamSettings = {volume: 0.15};
 
+var queues = new Map();
+
+const test = (server)=>{
+    var q = queues.get(server);
+    if(!q){
+        q = {
+            songs : new Array(),
+            addSong : (song)=>{
+                q.songs.push(song);
+            },
+            skipSong : ()=>{
+                q.songs.shift();
+            },
+            clear : ()=>{
+                q.songs = new Array();
+            },
+            nextSong : ()=>{
+                return q.songs[0];
+            }
+        }
+        queues.set(server, q);
+    }
+    return queues.get(server);
+}
+
+
 var queue = null;
 var dispatcher = null;
 var channel = null;
@@ -10,7 +36,7 @@ var connection = null;
 const playSong = (nextSong, message)=>{
     setDispatcher(connection.play(ytdl(nextSong.url, {filter:'audioonly'}), streamSettings));
     embed = new Discord.MessageEmbed();
-    embed.addField("Information", `Now playing : ${nextSong.title}`);
+    embed.addField("\:musical_note: Information", `Now playing : ${nextSong.title}`);
     require('./commands/index').commandAnswer(message, embed);
 }
 
