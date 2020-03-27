@@ -12,8 +12,10 @@ module.exports={
             return;
         }
 
-        if(message.author.id === kassId)
+        if(message.author.id === kassId){
             message.channel.send('Tg kass');
+            return;
+        }
 
         const sentence = args.join(' ');
 
