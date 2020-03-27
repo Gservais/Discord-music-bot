@@ -3,9 +3,9 @@ const Discord = require("discord.js");
 module.exports = {
     name:'remove-role',
     description:'Remove a specific role to a specific user',
-    execute (message, args){
-        if(!require('./index').checkIfAdmin(message)) return;
+    adminOnly:true,
     
+    execute (message, args){    
         if(args[0] === undefined || args[1] === undefined){
             embed = new Discord.MessageEmbed();
             embed.addField('Wrong args', 'Please mention the missing user or role!');

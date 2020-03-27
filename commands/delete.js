@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 module.exports = {
     name:'delete',
     description:'Delete a specific number of messages',
+    adminOnly:true,
+    
     execute(message, args){
         if(args[0] === undefined || (isNaN(args[0]) && args[0] !== 'all')){
             embed = new Discord.MessageEmbed();
@@ -11,9 +13,7 @@ module.exports = {
             require('./index').commandAnswer(message, embed);
             return;
         }
-    
-        if(!require('./index').checkIfAdmin(message)) return;
-    
+        
         message.channel.messages.fetch().then(async (messages) => {      
             let msgToDelete = messages.array();
     

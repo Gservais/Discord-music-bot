@@ -3,9 +3,9 @@ const Discord = require("discord.js");
 module.exports = {
     name:'kick',
     description:'Kick a specific user',
-    execute (message, args){
-        if(!require('./index').checkIfAdmin(message)) return;
+    adminOnly:true,
     
+    execute (message, args){    
         let userToKick = message.mentions.members.first();
     
         if(userToKick === undefined){

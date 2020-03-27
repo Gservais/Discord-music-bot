@@ -1,4 +1,4 @@
-const { prefix } = require('../config');
+const { prefix, adminRoleId } = require('../config');
 
 
 module.exports = (client, message)=>{
@@ -9,6 +9,14 @@ module.exports = (client, message)=>{
 
     const command = client.commands.get(commandName);
     if(!command) return;
+
+    const isAuthorized = message.member.roles.cache.get(adminRoleId);
+
+    if(command.adminOnly && !isAuthorized){
+        const embed = new Discord.MessageEmbed()
+            .addField('Unauthorized', 'You must be an admin !');
+        message.channel.send(embed);
+    }
 
     command.execute(message, args);
 }
