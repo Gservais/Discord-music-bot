@@ -36,7 +36,7 @@ var connection = null;
 const playSong = (nextSong, message)=>{
     setDispatcher(connection.play(ytdl(nextSong.url, {filter:'audioonly'}), streamSettings));
     embed = new Discord.MessageEmbed();
-    embed.addField("\:musical_note: Information", `Now playing : ${nextSong.title}`);
+    embed.addField("\:musical_note:  Information", `Now playing : ${nextSong.title}`);
     message.channel.send(embed);
 }
 
