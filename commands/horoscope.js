@@ -13,7 +13,7 @@ module.exports = {
             embed.addField('Missing argument', 'Please specify your sign!');
             embed.addField('Command template', '<prefix>horoscope <sign>');
             embed.addField('Sign values', 'aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius and pisces');
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
     
@@ -21,7 +21,7 @@ module.exports = {
             embed = new Discord.MessageEmbed();
             embed.addField('Wrong argument', 'Please specify a correct sign');
             embed.addField('Sign values', 'aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius and pisces');
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
     
@@ -42,7 +42,7 @@ module.exports = {
                 
                 embed = new Discord.MessageEmbed();
                 embed.addField('Your daily horoscope', `\:${args[0]}: ${res.body.description}`);
-                require('./index').commandAnswer(message, embed);
+                message.channel.send(embed);
             })
     }
 }

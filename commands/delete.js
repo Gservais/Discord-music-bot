@@ -10,7 +10,7 @@ module.exports = {
             embed = new Discord.MessageEmbed();
             embed.addField('Wrong args', 'Please specify either the number of messages to delete or all !');
             embed.addField('Command template', '<prefix>delete <number> | <all>');
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
         
@@ -28,7 +28,7 @@ module.exports = {
             
             embed = new Discord.MessageEmbed();
             embed.addField('Messages deleted', `${args[0] === 'all'? 'All': args[0]} message(s) deleted`);
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
         });
     }
 }

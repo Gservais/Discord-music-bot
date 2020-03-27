@@ -10,7 +10,7 @@ module.exports = {
             embed = new Discord.MessageEmbed();
             embed.addField('Wrong args', 'Please mention the missing user or role!');
             embed.addField('Command template', '<prefix>remove-role <user> <role>');
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
     
@@ -20,26 +20,26 @@ module.exports = {
         if(user === undefined){
             embed = new Discord.MessageEmbed();
             embed.addField('Unknown user', 'Please mention a known user !');
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
     
         if(roleToRemove === undefined){
             embed = new Discord.MessageEmbed();
             embed.addField('Unknown role', 'Please mention a known role !');
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
         if(!user.roles.cache.find(role => role.name === roleToRemove.name)){
             embed = new Discord.MessageEmbed();
             embed.addField('Role is not assigned', `${user.user.username} has not this role !`);
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
         else user.roles.remove(roleToRemove);
     
         embed = new Discord.MessageEmbed();
         embed.addField('Role has been removed', `${user.user.username} isn't ${roleToRemove.name} anymore!`);
-        require('./index').commandAnswer(message, embed);
+        message.channel.send(embed);
     }
 }

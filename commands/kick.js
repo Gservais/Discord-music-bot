@@ -11,14 +11,14 @@ module.exports = {
         if(userToKick === undefined){
             embed = new Discord.MessageEmbed();
             embed.addField('Unknown user', 'Please mention a known user !');
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return; 
         }
     
         userToKick.kick().then(()=>{
             embed = new Discord.MessageEmbed();
             embed.addField('User kicked', `Goodbye ${userToKick.user.username} :)`);
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
         });
     }
 }

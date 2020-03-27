@@ -11,21 +11,21 @@ module.exports = {
         if(!userChannel){
             embed = new Discord.MessageEmbed();
             embed.addField("Can't join", 'You must be in a vocal channel !')
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
         else{
             if(!getChannel()){
                 embed = new Discord.MessageEmbed();
                 embed.addField("Bot isn't used", "The bot isn't connected to any channel !")
-                require('./index').commandAnswer(message, embed);
+                message.channel.send(embed);
                 return;
             }
             else{
                 if(getChannel().id !== userChannel.id){
                     embed = new Discord.MessageEmbed();
                     embed.addField("Wrong", "You must be in the same channel as the bot to stop the song");
-                    require('./index').commandAnswer(message, embed);
+                    message.channel.send(embed);
                     return;
                 }
             }
@@ -35,13 +35,13 @@ module.exports = {
         if(hasDjRole){
             embed = new Discord.MessageEmbed();
             embed.addField("Good bye !", 'The bot has been stopped')
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             disconnect();
         }
         else{
             embed = new Discord.MessageEmbed();
             embed.addField("Role missing", "You must have the DJ role to stop the bot");
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
     }

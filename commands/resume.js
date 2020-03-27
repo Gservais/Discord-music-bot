@@ -9,21 +9,21 @@ module.exports = {
         if(!userChannel){
             embed = new Discord.MessageEmbed();
             embed.addField("Can't join", 'You must be in a vocal channel !')
-            require('./index').commandAnswer(message, embed);
+            message.channel.send(embed);
             return;
         }
         else{
             if(!getChannel()){
                 embed = new Discord.MessageEmbed();
                 embed.addField("Bot isn't used", "The bot isn't connected to any channel !")
-                require('./index').commandAnswer(message, embed);
+                message.channel.send(embed);
                 return;
             }
             else{
                 if(getChannel().id !== userChannel.id){
                     embed = new Discord.MessageEmbed();
                     embed.addField("Wrong", "You must be in the same channel as the bot to resume the song");
-                    require('./index').commandAnswer(message, embed);
+                    message.channel.send(embed);
                     return;
                 }
             }
