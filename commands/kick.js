@@ -4,7 +4,7 @@ module.exports = {
     name:'kick',
     description:'Kick a specific user',
     adminOnly:true,
-    
+    args:['user'],
     execute (message, args){    
         let userToKick = message.mentions.members.first();
     

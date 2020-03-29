@@ -5,6 +5,7 @@ const { horoscope_api_token } = require('../config');
 module.exports = {
     name:'horoscope',
     description:'Gives the daily horoscope for a specific sign',
+    args:['sign'],
     async execute(message, args){
         const signs = ['aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces']
     

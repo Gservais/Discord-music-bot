@@ -4,7 +4,7 @@ module.exports = {
     name:'delete',
     description:'Delete a specific number of messages',
     adminOnly:true,
-    
+    args:['number | all'],
     execute(message, args){
         if(args[0] === undefined || (isNaN(args[0]) && args[0] !== 'all')){
             embed = new Discord.MessageEmbed();

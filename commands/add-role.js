@@ -4,7 +4,7 @@ module.exports = {
     name:"add-role",
     description:"Add a specific role to a specific user",
     adminOnly:true,
-
+    args:['user', 'role'],
     execute(message, args){    
         if(args[0] === undefined || args[1] === undefined){
             embed = new Discord.MessageEmbed();
@@ -26,7 +26,7 @@ module.exports = {
 
         if(roleToAdd === undefined){
             embed = new Discord.MessageEmbed();
-            embed.addField('Unknown role', 'Please mention a known role !');
+            embed.addField('Missing role', 'Please mention a known role !');
             message.channel.send(embed);
             return;
         }
@@ -37,7 +37,8 @@ module.exports = {
             message.channel.send(embed);
             return;
         }
-        else user.roles.add(roleToAdd);
+        else 
+            user.roles.add(roleToAdd);
 
         embed = new Discord.MessageEmbed();
         embed.addField('Role has been assigned', `${user.user.username} is now ${roleToAdd.name} !`);

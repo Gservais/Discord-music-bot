@@ -1,12 +1,13 @@
 const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
-const {setChannel, playSong, defineDispatcher, getConnection, setConnection, getChannel} = require('../songManager');
+const songManager = require('../manager').getSongManager()
 
 module.exports = {
     name:'play',
     description:'Play a song of a specific URL',
     async execute(message, args){
-        const queue = require('../songManager').getQueue();
+        const serverId = message.guild.id;
+        const queue = songManager.getQueue(serverId);
     
         var userChannel = message.member.voice.channel;
         if(!userChannel){
@@ -16,11 +17,11 @@ module.exports = {
             return;
         }
         else{
-            if(!getChannel()){
-                setChannel(userChannel);
+            if(!songManager.getChannel(serverId)){
+                songManager.setChannel(serverId, userChannel);
             }
             else{
-                if(getChannel().id !== userChannel.id){
+                if(songManager.getChannel(serverId).id !== userChannel.id){
                     embed = new Discord.MessageEmbed();
                     embed.addField("Bot already in use", "The bot is already used in another channel");
                     message.channel.send(embed);
@@ -29,7 +30,8 @@ module.exports = {
             }
         }
     
-        const permissions = getChannel().permissionsFor(message.client.user);
+        const tesst = songManager.getChannel(serverId);
+        const permissions = songManager.getChannel(serverId).permissionsFor(message.client.user);
         if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
             embed = new Discord.MessageEmbed();
             embed.addField("Can't join", "I don't have the permissions to join this channel")
@@ -59,11 +61,11 @@ module.exports = {
             message.channel.send(embed);
         }
     
-        if(!getConnection()){
+        if(!songManager.getConnection(serverId)){
             const nextSong = queue.nextSong();
-            setConnection(await getChannel().join());
-            playSong(nextSong, message);
-            defineDispatcher(message);
+            songManager.setConnection(serverId, await songManager.getChannel(serverId).join());
+            songManager.playSong(serverId, nextSong, message);
+            songManager.defineDispatcher(serverId, message);
         }
     }
 }

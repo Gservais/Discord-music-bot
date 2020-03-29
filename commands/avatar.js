@@ -2,9 +2,9 @@ const Discord = require("discord.js");
 const Canvas = require('canvas');
 
 module.exports = {
-    name: 'Avatar',
+    name: 'avatar',
     description:  "Displays your own avatar or the mentionned user's avatar",
-    
+    args:['user (optional)'],
     async execute(message, args){
         const user = message.mentions.users.first() ? message.mentions.users.first() : message.author;
         const userAvatar = user.displayAvatarURL({ format: 'png' });

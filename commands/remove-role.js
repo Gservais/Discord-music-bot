@@ -4,7 +4,7 @@ module.exports = {
     name:'remove-role',
     description:'Remove a specific role to a specific user',
     adminOnly:true,
-    
+    args:['user', 'role'],
     execute (message, args){    
         if(args[0] === undefined || args[1] === undefined){
             embed = new Discord.MessageEmbed();
