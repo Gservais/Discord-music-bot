@@ -41,6 +41,7 @@ module.exports = {
         if(nextSong){
             songManager.playSong(serverId, nextSong, message);
             songManager.defineDispatcher(serverId,message);
+            message.channel.send('**Skipped**');
         }
         else{
             songManager.disconnect(serverId);
