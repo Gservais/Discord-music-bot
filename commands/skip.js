@@ -37,11 +37,11 @@ module.exports = {
         // let hasDjRole = message.member._roles.includes(DJ_ROLE);
         // if(hasDjRole){
         queue.skipSong();
+        message.channel.send('**Skipped**');
         const nextSong = queue.nextSong();
         if(nextSong){
             songManager.playSong(serverId, nextSong, message);
             songManager.defineDispatcher(serverId,message);
-            message.channel.send('**Skipped**');
         }
         else{
             songManager.disconnect(serverId);
