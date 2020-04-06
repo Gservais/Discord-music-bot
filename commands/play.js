@@ -5,7 +5,7 @@ const Youtube = require('simple-youtube-api');
 const { youtube_api_token } = require('../config');
 const youtube = new Youtube(youtube_api_token);
 
-const YOUTUBE_URL_REGEX =  /^(?!.*\?.*\bv=)https:\/\/www\.youtube\.com\/.*\?.*\blist=.*$/;
+const YOUTUBE_URL_REGEX = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
 const YOUTUBE_BASE_URL = 'https://www.youtube.com/watch?v=';
 
 async function awaitAnswer(message, results){
@@ -100,7 +100,7 @@ module.exports = {
             embed.addField("Song added", `**${songInfo.title}** has been added to the queue`)
             message.channel.send(embed);
         }
-    
+        
         if(!songManager.getConnection(serverId)){
             const nextSong = queue.nextSong();
             songManager.setConnection(serverId, await songManager.getChannel(serverId).join());
